@@ -1,0 +1,17 @@
+# Secrets
+.token
+.watch_key
+keys/
+worker/.dev.vars
+
+# Personal Squadrats data and scratch output
+data/
+tools/__pycache__/
+
+# Build outputs and tooling
+watch/bin/
+watch/resources/settings/properties.xml
+worker/.wrangler/
+worker/node_modules/
+node_modules/
+.DS_Store

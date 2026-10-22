@@ -1,0 +1,7 @@
+name = "squadrats-sync"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Secrets (set with `wrangler secret put`):
+#   SQUADRATS_TOKEN - your squadrats.com user token
+#   WATCH_KEY       - shared key the watch sends, so others can't read your tiles

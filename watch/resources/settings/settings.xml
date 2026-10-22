@@ -1,0 +1,14 @@
+<settings>
+    <setting propertyKey="@Properties.workerUrl" title="@Strings.WorkerUrlTitle">
+        <settingConfig type="alphaNumeric"/>
+    </setting>
+    <setting propertyKey="@Properties.watchKey" title="@Strings.WatchKeyTitle">
+        <settingConfig type="alphaNumeric"/>
+    </setting>
+    <setting propertyKey="@Properties.cellSize" title="@Strings.CellSizeTitle">
+        <settingConfig type="numeric" min="0" max="60"/>
+    </setting>
+    <setting propertyKey="@Properties.vibrate" title="@Strings.VibrateTitle">
+        <settingConfig type="boolean"/>
+    </setting>
+</settings>
