@@ -5,7 +5,6 @@ import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.Math;
 import Toybox.Position;
-import Toybox.StringUtil;
 import Toybox.Time;
 import Toybox.WatchUi;
 
@@ -58,10 +57,7 @@ class SquadratsView extends WatchUi.DataField {
         if (window == null) {
             return;
         }
-        mBits = StringUtil.convertEncodedString(window["bits"] as String, {
-            :fromRepresentation => StringUtil.REPRESENTATION_STRING_BASE64,
-            :toRepresentation => StringUtil.REPRESENTATION_BYTE_ARRAY
-        }) as ByteArray;
+        mBits = Sync.bits(window);
         mX0 = window["x0"] as Number;
         mY0 = window["y0"] as Number;
         mW = window["w"] as Number;

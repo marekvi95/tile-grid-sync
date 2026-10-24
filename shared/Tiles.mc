@@ -21,6 +21,14 @@ module Tiles {
         return [Math.floor(t[0]).toNumber(), Math.floor(t[1]).toNumber()];
     }
 
+    // [lat, lon] in degrees of a fractional tile position; inverse of toTileF.
+    function tileToDeg(x as Double, y as Double) as Array<Double> {
+        var lon = x / ZOOM_SCALE * 360.0d - 180.0d;
+        var n = Math.PI - 2.0d * Math.PI * y / ZOOM_SCALE;
+        var lat = Math.atan((Math.pow(2.718281828459045d, n) - Math.pow(2.718281828459045d, -n)) / 2.0d) * 180.0d / Math.PI;
+        return [lat, lon];
+    }
+
     // Width of one squadratinho in metres at a latitude.
     function tileMeters(lat as Double) as Double {
         return EARTH_CIRCUMFERENCE * Math.cos(lat * Math.PI / 180.0d) / ZOOM_SCALE;

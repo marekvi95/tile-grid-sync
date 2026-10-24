@@ -10,7 +10,8 @@ tools/__pycache__/
 
 # Build outputs and tooling
 watch/bin/
-watch/resources/settings/properties.xml
+watch-map/bin/
+**/resources/settings/properties.xml
 worker/.wrangler/
 worker/node_modules/
 node_modules/
