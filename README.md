@@ -103,4 +103,4 @@ out of commits.
 
 ## License
 
-No license has been chosen yet. Until a `LICENSE` file is added, all rights are reserved by the author.
+MIT License. See [LICENSE](LICENSE).
