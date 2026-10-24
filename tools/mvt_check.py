@@ -1,4 +1,4 @@
-"""Decode a squadrats z12 vector tile and compare its squadratinhos with the GeoJSON tile set."""
+"""Decode a z12 vector tile and compare its tiles with the GeoJSON tile set."""
 import gzip, json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from kml_to_tiles import load_tiles_geojson

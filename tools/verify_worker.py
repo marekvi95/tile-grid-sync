@@ -9,7 +9,7 @@ places = {"Brno": (49.195, 16.608), "Vienna": (48.208, 16.372), "Bratislava": (4
           "Brno south edge": (49.10, 16.74), "Tokyo": (35.68, 139.77), "Atlantic (nothing)": (40.0, -30.0)}
 for name, (lat, lon) in places.items():
     t = time.time()
-    req = urllib.request.Request(f"{base}/tiles?key={key}&lat={lat}&lon={lon}", headers={"User-Agent": "squadrats-sync-verify"})
+    req = urllib.request.Request(f"{base}/tiles?key={key}&lat={lat}&lon={lon}", headers={"User-Agent": "tile-grid-sync-verify"})
     r = json.load(urllib.request.urlopen(req))
     ms = (time.time() - t) * 1000
     b = base64.b64decode(r["bits"])

@@ -1,7 +1,7 @@
 import Toybox.Lang;
 import Toybox.Math;
 
-// Web Mercator tile maths at squadratinho zoom (z17), shared by the data field and the background service.
+// Web Mercator tile maths at tile zoom (z17), shared by the data field and the background service.
 (:background)
 module Tiles {
     const ZOOM_SCALE = 131072.0d;  // 2^17
@@ -29,7 +29,7 @@ module Tiles {
         return [lat, lon];
     }
 
-    // Width of one squadratinho in metres at a latitude.
+    // Width of one tile in metres at a latitude.
     function tileMeters(lat as Double) as Double {
         return EARTH_CIRCUMFERENCE * Math.cos(lat * Math.PI / 180.0d) / ZOOM_SCALE;
     }

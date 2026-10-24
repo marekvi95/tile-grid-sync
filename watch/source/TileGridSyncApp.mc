@@ -5,15 +5,15 @@ import Toybox.System;
 import Toybox.WatchUi;
 
 (:background)
-class SquadratsSyncApp extends Application.AppBase {
-    private var mView as SquadratsView?;
+class TileGridSyncApp extends Application.AppBase {
+    private var mView as TileGridView?;
 
     function initialize() {
         AppBase.initialize();
     }
 
     function getInitialView() as [WatchUi.Views] or [WatchUi.Views, WatchUi.InputDelegates] {
-        mView = new SquadratsView();
+        mView = new TileGridView();
         Sync.schedule();
         return [mView];
     }

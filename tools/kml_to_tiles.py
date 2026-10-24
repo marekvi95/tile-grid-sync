@@ -1,4 +1,4 @@
-"""Convert squadrats.com data (KML export or live GeoJSON) into a set of visited OSM tiles (x, y)."""
+"""Convert a tile-service export (KML or live GeoJSON) into a set of visited OSM tiles (x, y)."""
 import json
 import math
 import xml.etree.ElementTree as ET

@@ -1,7 +1,7 @@
 <strings>
-    <string id="AppName">Squadratinhos Sync</string>
+    <string id="AppName">Tile Grid Sync</string>
     <string id="WorkerUrlTitle">Sync server URL</string>
     <string id="WatchKeyTitle">Sync key</string>
     <string id="CellSizeTitle">Tile size on screen (px, 0 = auto)</string>
-    <string id="VibrateTitle">Vibrate on new squadratinho</string>
+    <string id="VibrateTitle">Vibrate on new tile</string>
 </strings>

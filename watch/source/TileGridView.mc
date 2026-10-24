@@ -15,10 +15,10 @@ const COLOR_GRID = 0x3A3A3A;
 const COLOR_TRACK = 0xFFAA00;
 
 const TRACK_POINTS = 60;
-const SEARCH_RADIUS = 25;        // tiles searched for the nearest uncollected squadratinho
+const SEARCH_RADIUS = 25;        // tiles searched for the nearest uncollected tile
 const POS_SAVE_INTERVAL = 60;    // seconds between position writes for the background service
 
-class SquadratsView extends WatchUi.DataField {
+class TileGridView extends WatchUi.DataField {
     // Synced window of collected tiles (bit set = collected), row-major, MSB first.
     private var mBits as ByteArray?;
     private var mX0 as Number = 0;
@@ -200,7 +200,7 @@ class SquadratsView extends WatchUi.DataField {
     private function drawMap(dc as Graphics.Dc, w as Number, h as Number, pos as Array<Double>) as Void {
         var cell = mCell;
         if (cell == 0) {
-            // Auto: 3 squadratinhos across the shorter side, so a 3x3 block fills the field.
+            // Auto: 3 tiles across the shorter side, so a 3x3 block fills the field.
             cell = (w < h ? w : h) / 3;
         }
         var cx = w / 2.0d;

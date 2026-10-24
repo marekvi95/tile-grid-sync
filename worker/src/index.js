@@ -1,15 +1,15 @@
-// Serves a compact bitmap of collected squadratinhos around a position, for the Garmin data field.
+// Serves a compact bitmap of collected tiles around a position, for the Garmin data field.
 //
 // GET /tiles?key=WATCH_KEY&lat=49.19&lon=16.60
 // -> {"ts":..., "z":17, "x0":..., "y0":..., "w":128, "h":128, "n":..., "bits":"<base64>"}
 // bits: row-major over the window, MSB first; bit set = collected.
 //
-// Data comes live from the squadrats.com vector tiles: one z12 tile holds 32x32 squadratinhos,
+// Data comes live from the upstream vector tile service: one z12 tile holds 32x32 tiles,
 // so the 128x128 window is aligned to the z12 grid and built from 4x4 small tiles.
 
 const ZOOM = 17;
 const FETCH_ZOOM = 12;
-const BLOCK = 2 ** (ZOOM - FETCH_ZOOM); // squadratinhos per z12 tile side
+const BLOCK = 2 ** (ZOOM - FETCH_ZOOM); // tiles per z12 tile side
 const BLOCKS = 4;
 const WINDOW = BLOCK * BLOCKS;
 
@@ -49,15 +49,16 @@ export default {
   },
 };
 
-// Even-odd fills the "squadratinhos" polygons of one vector tile into the window bitmap at (ox, oy).
+// Even-odd fills the tile polygons of one vector tile into the window bitmap at (ox, oy).
 function fillBlock(tile, bits, ox, oy) {
+  // Upstream layer name; the data field does not depend on it.
   const layer = readLayers(tile).find((l) => l.name === "squadratinhos");
   if (!layer) return;
   const unit = layer.extent / BLOCK;
   const rows = Array.from({ length: BLOCK }, () => []);
   for (const feature of layer.features) {
     for (const ring of decodeRings(feature)) {
-      // Snap to squadratinho corners: the encoder leaves some vertices 1 unit off the grid.
+      // Snap to tile corners: the encoder leaves some vertices 1 unit off the grid.
       const pts = ring.map(([x, y]) => [Math.round(x / unit), Math.round(y / unit)]);
       for (let k = 0; k < pts.length; k++) {
         const [x1, y1] = pts[k];

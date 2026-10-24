@@ -4,7 +4,7 @@
 keys/
 worker/.dev.vars
 
-# Personal Squadrats data and scratch output
+# Personal tile data and scratch output
 data/
 tools/__pycache__/
 
