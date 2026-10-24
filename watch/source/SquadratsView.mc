@@ -200,10 +200,8 @@ class SquadratsView extends WatchUi.DataField {
     private function drawMap(dc as Graphics.Dc, w as Number, h as Number, pos as Array<Double>) as Void {
         var cell = mCell;
         if (cell == 0) {
-            // Auto: about 5 squadratinhos across the field, at least 3 rows.
-            var byWidth = w / 5;
-            var byHeight = h / 3;
-            cell = byWidth < byHeight ? byWidth : byHeight;
+            // Auto: 3 squadratinhos across the shorter side, so a 3x3 block fills the field.
+            cell = (w < h ? w : h) / 3;
         }
         var cx = w / 2.0d;
         var cy = h / 2.0d;
@@ -285,13 +283,18 @@ class SquadratsView extends WatchUi.DataField {
         var fh = dc.getFontHeight(font);
         var top = (h * 0.06).toNumber();
         var bottom = h - fh - (h * 0.06).toNumber();
+        drawBoxedText(dc, w, top, font, "+" + mNewCount + " new", COLOR_NEW);
+        drawBoxedText(dc, w, bottom, font, nearestText(), Graphics.COLOR_WHITE);
+    }
+
+    private function drawBoxedText(dc as Graphics.Dc, w as Number, y as Number, font as Graphics.FontType,
+            text as String, color as Number) as Void {
+        var pad = 8;
+        var tw = dc.getTextWidthInPixels(text, font);
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
-        dc.fillRectangle(w / 2 - 70, top, 140, fh);
-        dc.fillRectangle(w / 2 - 90, bottom, 180, fh);
-        dc.setColor(COLOR_NEW, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(w / 2, top, font, "+" + mNewCount + " new", Graphics.TEXT_JUSTIFY_CENTER);
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(w / 2, bottom, font, nearestText(), Graphics.TEXT_JUSTIFY_CENTER);
+        dc.fillRectangle(w / 2 - tw / 2 - pad, y, tw + 2 * pad, dc.getFontHeight(font));
+        dc.setColor(color, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(w / 2, y, font, text, Graphics.TEXT_JUSTIFY_CENTER);
     }
 
     private function drawCompact(dc as Graphics.Dc, w as Number, h as Number) as Void {
