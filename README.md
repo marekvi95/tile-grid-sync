@@ -5,6 +5,8 @@ on a tile-tracking service, around your current position.
 
 This is an unofficial project. It is not affiliated with or endorsed by any tile service. See [DISCLAIMER.md](DISCLAIMER.md).
 
+![Data field on the Forerunner 970: collected tiles in a 3×3 grid, with the distance to the next uncollected tile](docs/screenshots/data-field.png)
+
 ## How it works
 
 ```
