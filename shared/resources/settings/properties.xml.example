@@ -1,0 +1,7 @@
+<properties>
+    <!-- Copy to properties.xml (gitignored) and fill in. The worker URL and watchKey become build-time defaults. -->
+    <property id="workerUrl" type="string">https://squadrats-sync.YOUR_SUBDOMAIN.workers.dev</property>
+    <property id="watchKey" type="string">YOUR_WATCH_KEY_MATCHING_WATCH_KEY_SECRET</property>
+    <property id="cellSize" type="number">0</property>
+    <property id="vibrate" type="boolean">true</property>
+</properties>
